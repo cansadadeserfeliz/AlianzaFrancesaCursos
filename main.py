@@ -30,8 +30,8 @@ courses = soup.select('.cursos .curso')
 for course in courses:
   content = course.text
 
-  # if place and place not in content:
-  #   continue
+  if place and place not in content:
+    continue
 
   course_place = ''
   for p in places:
