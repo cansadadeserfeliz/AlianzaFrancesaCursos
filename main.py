@@ -6,9 +6,18 @@ from bs4 import BeautifulSoup
 
 place = 'CEDRITOS'
 place = None
-level = 'A1.2'
+level = 'A2.1'
 intensity = 'SEMI-INTENSIVO (SABADOS)'
 places = ['CEDRITOS', 'CHICO', 'CENTRO']
+
+COLOR_WHITE = 'white'
+COLOR_GREEN = 'green'
+COLOR_LIGHT_GREEN = 'light_green'
+COLOR_RED = 'red'
+COLOR_BLUE = 'blue'
+COLOR_LIGHT_BLUE = 'light_blue'
+COLOR_MAGENTA = 'magenta'
+COLOR_LIGHT_YELLOW = 'light_yellow'
 
 
 def process(text):
@@ -46,15 +55,22 @@ for course in courses:
     continue
 
   print('--- === ---')
-  print('Nivel:', colored(course.get('data-nivel'), 'red'))
-  print('Intensidad:', colored(course.get('data-intensidad'), 'blue'))
-  print('Cede:', colored(course_place, 'magenta'))
-  print('Formato:', colored(course.get('data-formato'), 'yellow'))
-  print('Estado:', 'Curso lleno' if 'Curso lleno' in content else 'disponible')
+  print('Nivel:', colored(course.get('data-nivel'), COLOR_RED))
+  print('Intensidad:', colored(course.get('data-intensidad'), COLOR_BLUE))
+  print('Cede:', colored(course_place, COLOR_MAGENTA))
+  print('Formato:', colored(course.get('data-formato'), COLOR_LIGHT_BLUE))
+  print('Estado:', colored('Curso lleno', COLOR_RED) if 'Curso lleno' in content else colored('disponible', COLOR_GREEN))
 
   for section in course.find_all('p'):
     strings = list(section.stripped_strings)
     if section.strong:
       title = process(section.strong.get_text())
+      
       value = ' '.join(section.find_all(string=True, recursive=False))
-      print(colored(title, 'green'), process(value))
+      value = process(value)
+      
+      color = COLOR_WHITE
+      if title == 'Formato:':
+        color = COLOR_LIGHT_GREEN
+      
+      print('\t', title, colored(value, color))
