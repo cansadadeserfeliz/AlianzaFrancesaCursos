@@ -32,15 +32,14 @@ COLOR_MAGENTA = 'magenta'
 COLOR_LIGHT_YELLOW = 'light_yellow'
 
 QUERY_PLACE = None
-QUERY_LEVEL = 'A1.2'
+QUERY_LEVEL = A2_LEVELS[0]
 QUERY_INTENSITY = INTENCITY_SATURDAY
-# QUERY_LEVEL = input('Qué curso quieres consultar? ').upper()
 
 input_message = 'Qué curso quieres consultar? \n'
 
 enumerated_levels = {index + 1: level for index, level in enumerate(LEVELS)}
 for index, item in enumerated_levels.items():
-    input_message += f'{index}) {item}\n'
+  input_message += f'{index}) {item}\n'
 input_message += 'Escoge uno: '
 
 QUERY_LEVEL = ''
