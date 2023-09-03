@@ -9,6 +9,16 @@ INTENCITY_INTENCIVE = 'INTENSIVO'
 INTENCITY_WEEKDAYS = 'SEMI-INTENSIVO (SEMANA)'
 INTENCITY_SATURDAY = 'SEMI-INTENSIVO (SABADOS)'
 
+A1_LEVELS = ['A1.1', 'A1.2']
+A2_LEVELS = ['A2.1', 'A2.2', 'A2.3']
+A_LEVELS = A1_LEVELS + A2_LEVELS
+
+B1_LEVELS = ['B1.1', 'B1.2', 'B1.3', 'B1.4', 'B1.5']
+B2_LEVELS = ['B2.1', 'B2.2', 'B2.3', 'B2.4']
+B_LEVELS = B1_LEVELS + B2_LEVELS
+
+LEVELS = A_LEVELS + B_LEVELS
+
 PLACE_CEDRITOS = 'CEDRITOS'
 PLACES = [PLACE_CEDRITOS, 'CHICO', 'CENTRO']
 
@@ -22,9 +32,23 @@ COLOR_MAGENTA = 'magenta'
 COLOR_LIGHT_YELLOW = 'light_yellow'
 
 QUERY_PLACE = None
-QUERY_LEVEL = 'A2.1'
+QUERY_LEVEL = 'A1.2'
 QUERY_INTENSITY = INTENCITY_SATURDAY
-# QUERY_LEVEL = input('Qué curso quieres consultar? ')
+# QUERY_LEVEL = input('Qué curso quieres consultar? ').upper()
+
+input_message = 'Qué curso quieres consultar? \n'
+
+enumerated_levels = {index + 1: level for index, level in enumerate(LEVELS)}
+for index, item in enumerated_levels.items():
+    input_message += f'{index}) {item}\n'
+input_message += 'Escoge uno: '
+
+QUERY_LEVEL = ''
+while QUERY_LEVEL not in LEVELS:
+  user_input = int(input(input_message))
+  QUERY_LEVEL = enumerated_levels.get(user_input)
+
+print('Escogiste: ' + QUERY_LEVEL)
 
 
 def process(text):
@@ -96,4 +120,4 @@ for course in courses:
 
       print('\t', title, colored(value, color))
 
-print('FIN')
+print('--- FIN ---')
