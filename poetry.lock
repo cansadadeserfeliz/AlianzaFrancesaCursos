@@ -100,6 +100,14 @@ html5lib = ["html5lib"]
 lxml = ["lxml"]
 
 [[package]]
+name = "boltons"
+version = "23.0.0"
+description = "When they're not builtins, they're boltons."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "bs4"
 version = "0.0.1"
 description = "Dummy package for Beautiful Soup"
@@ -187,6 +195,17 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "face"
+version = "20.1.1"
+description = "A command-line application framework (and CLI parser). Friendly for users, full-featured for developers."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+boltons = ">=20.0.0"
+
+[[package]]
 name = "flask"
 version = "2.2.2"
 description = "A simple framework for building complex web applications."
@@ -211,6 +230,22 @@ description = "A list-like structure which implements collections.abc.MutableSeq
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "glom"
+version = "23.3.0"
+description = "A declarative object transformer and formatter, for conglomerating nested data."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+attrs = "*"
+boltons = ">=19.3.0"
+face = "20.1.1"
+
+[package.extras]
+yaml = ["pyyaml"]
 
 [[package]]
 name = "idna"
@@ -265,6 +300,14 @@ MarkupSafe = ">=2.0"
 
 [package.extras]
 i18n = ["Babel (>=2.7)"]
+
+[[package]]
+name = "jq"
+version = "1.6.0"
+description = "jq is a lightweight and flexible JSON processor."
+category = "main"
+optional = false
+python-versions = ">=3.5"
 
 [[package]]
 name = "markupsafe"
@@ -625,7 +668,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "c683f57ec85be72909c8d218a74ba2d8e0f93bdefa9f8bc66f7dc64cb4bdc921"
+content-hash = "7c0ea2a9d252bc7cc7d3d1ab9940f1f26bdaac2cfff944504ab33c6b55405e44"
 
 [metadata.files]
 aiohttp = []
@@ -635,6 +678,7 @@ argon2-cffi-bindings = []
 async-timeout = []
 attrs = []
 beautifulsoup4 = []
+boltons = []
 bs4 = []
 certifi = []
 cffi = []
@@ -643,13 +687,16 @@ click = []
 colorama = []
 cryptography = []
 debugpy = []
+face = []
 flask = []
 frozenlist = []
+glom = []
 idna = []
 iso8601 = []
 itsdangerous = []
 jedi = []
 jinja2 = []
+jq = []
 markupsafe = []
 multidict = []
 numpy = []
